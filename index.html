@@ -8,9 +8,30 @@
 <body>
 
   <h1>🚀 Science Quiz Pro</h1>
-  <p>Welcome to Science Quiz Pro AI learning platform.</p>
 
-  <button>Start Quiz</button>
+  <p id="question">
+    What planet is known as the Red Planet?
+  </p>
+
+  <button onclick="checkAnswer('Mars')">Mars</button>
+
+  <button onclick="checkAnswer('Earth')">Earth</button>
+
+  <button onclick="checkAnswer('Jupiter')">Jupiter</button>
+
+  <p id="result"></p>
+
+  <script>
+    function checkAnswer(answer) {
+      if(answer === 'Mars') {
+        document.getElementById("result").innerHTML =
+        "✅ Correct Answer!";
+      
+        document.getElementById("result").innerHTML =
+        "❌ Wrong Answer!";
+      }
+    }
+  </script>
 
 </body>
 </html>
