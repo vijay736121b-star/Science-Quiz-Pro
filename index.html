@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Science Quiz Pro</title>
     <link rel="stylesheet" href="style.css">
@@ -7,112 +8,18 @@
 
 <body>
 
-<h1>🚀 Science Quiz Pro</h1>
+    <h1>🚀 Science Quiz Pro</h1>
 
-<p id="question"></p>
+    <p id="question"></p>
 
-<div id="answers"></div>
+    <div id="answers"></div>
 
-<p id="result"></p>
+    <p id="result"></p>
 
-<p id="score"></p>
+    <p id="score"></p>
 
-<script>
-
-const quiz = [
-{
-question: "What planet is known as the Red Planet?",
-answers: ["Mars", "Earth", "Jupiter"],
-correct: "Mars"
-},
-{
-question: "What gas do humans breathe in?",
-answers: ["Oxygen", "Hydrogen", "Carbon Dioxide"],
-correct: "Oxygen"
-},
-{
-question: "How many planets are in the Solar System?",
-answers: ["8", "7", "9"],
-correct: "8"
-},
-{
-question: "What is H2O?",
-answers: ["Water", "Oxygen", "Salt"],
-correct: "Water"
-},
-{
-question: "Which planet is biggest?",
-answers: ["Jupiter", "Mars", "Venus"],
-correct: "Jupiter"
-}
-];
-
-let currentQuestion = 0;
-let score = 0;
-
-function loadQuestion() {
-
-document.getElementById("result").innerHTML = "";
-
-const q = quiz[currentQuestion];
-
-document.getElementById("question").innerHTML = q.question;
-
-let buttons = "";
-
-for(let i = 0; i < q.answers.length; i++) {
-
-buttons += `
-<button onclick="checkAnswer('${q.answers[i]}')">
-${q.answers[i]}
-</button>
-`;
-}
-
-document.getElementById("answers").innerHTML = buttons;
-}
-
-function checkAnswer(answer) {
-
-if(answer === quiz[currentQuestion].correct) {
-
-score++;
-
-document.getElementById("result").innerHTML =
-"✅ Correct Answer!";
-
-} else {
-
-document.getElementById("result").innerHTML =
-"❌ Wrong Answer!";
-}
-
-currentQuestion++;
-
-if(currentQuestion < quiz.length) {
-
-setTimeout(loadQuestion, 1000);
-
-} else {
-
-setTimeout(showScore, 1000);
-}
-}
-
-function showScore() {
-
-document.getElementById("question").innerHTML =
-"🎉 Quiz Finished!";
-
-document.getElementById("answers").innerHTML = "";
-
-document.getElementById("result").innerHTML =
-"Your Score: " + score + "/" + quiz.length;
-}
-
-loadQuestion();
-
-</script>
+    <script src="script.js"></script>
 
 </body>
+
 </html>
