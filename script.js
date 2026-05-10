@@ -314,7 +314,8 @@ function loadQuestion() {
 
     const q = quiz[currentQuestion];
 
-    document.getElementById("question").innerHTML = q.question;
+    document.getElementById("question").innerHTML =
+"Question " + (currentQuestion + 1) + " / " + quiz.length + "<br><br>" + q.question;
 
     let buttons = "";
 
