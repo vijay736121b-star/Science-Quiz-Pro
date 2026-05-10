@@ -313,6 +313,7 @@ function loadQuestion() {
     document.getElementById("result").innerHTML = "";
 
     const q = quiz[currentQuestion];
+    q.answers.sort(() => Math.random() - 0.5);
 
     document.getElementById("question").innerHTML =
 "Question " + (currentQuestion + 1) + " / " + quiz.length + "<br><br>" + q.question;
