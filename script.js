@@ -368,3 +368,9 @@ function showScore() {
 }
 
 loadQuestion();
+function restartQuiz() {
+    currentQuestion = 0;
+    score = 0;
+    loadQuestion();
+}
+
