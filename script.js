@@ -306,3 +306,65 @@ correct: "Spherical",
 reason: "Earth is nearly spherical in shape."
 }
 ];
+let currentQuestion = 0;
+let score = 0;
+
+function loadQuestion() {
+    document.getElementById("result").innerHTML = "";
+
+    const q = quiz[currentQuestion];
+
+    document.getElementById("question").innerHTML = q.question;
+
+    let buttons = "";
+
+    for(let i = 0; i < q.answers.length; i++) {
+        buttons += `
+        <button onclick="checkAnswer('${q.answers[i]}')">
+        ${q.answers[i]}
+        </button>
+        `;
+    }
+
+    document.getElementById("answers").innerHTML = buttons;
+}
+
+function checkAnswer(answer) {
+
+    if(answer === quiz[currentQuestion].correct) {
+
+        score++;
+
+        document.getElementById("result").innerHTML =
+        "✅ Correct Answer!<br>" + quiz[currentQuestion].reason;
+
+    } else {
+
+        document.getElementById("result").innerHTML =
+        "❌ Wrong Answer!<br>" + quiz[currentQuestion].reason;
+    }
+
+    currentQuestion++;
+
+    if(currentQuestion < quiz.length) {
+
+        setTimeout(loadQuestion, 1500);
+
+    } else {
+
+        setTimeout(showScore, 1500);
+    }
+}
+
+function showScore() {
+
+    document.getElementById("question").innerHTML =
+    "🎉 Quiz Finished!";
+
+    document.getElementById("answers").innerHTML = "";
+
+    document.getElementById("result").innerHTML =
+    "Your Score: " + score + "/" + quiz.length;
+}
+
+loadQuestion();
