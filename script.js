@@ -380,8 +380,13 @@ else{
     message = "📚 Practice More!";
 }
 
+let player =
+document.getElementById("playerName").value;
+
 document.getElementById("result").innerHTML =
-"Your Score: " + score + "/" + quiz.length + "<br><br>" + message;
+"🎉 Great Job, " + player + "!<br><br>" +
+"Your Score: " + score + "/" + quiz.length +
+"<br><br>" + message;
 }
 
 loadQuestion();
