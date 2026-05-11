@@ -350,11 +350,11 @@ function checkAnswer(answer) {
 
     if(currentQuestion < quiz.length) {
 
-        setTimeout(loadQuestion, 1500);
+        setTimeout(loadQuestion, 10000);
 
     } else {
 
-        setTimeout(showScore, 1500);
+        setTimeout(showScore, 10000);
     }
 }
 
