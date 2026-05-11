@@ -365,8 +365,23 @@ function showScore() {
 
     document.getElementById("answers").innerHTML = "";
 
-    document.getElementById("result").innerHTML =
-    "Your Score: " + score + "/" + quiz.length;
+    let message = "";
+
+if(score >= 45){
+    message = "🎉 Excellent!";
+}
+else if(score >= 30){
+    message = "👍 Good Job!";
+}
+else if(score >= 20){
+    message = "🙂 Average Performance";
+}
+else{
+    message = "📚 Practice More!";
+}
+
+document.getElementById("result").innerHTML =
+"Your Score: " + score + "/" + quiz.length + "<br><br>" + message;
 }
 
 loadQuestion();
