@@ -376,3 +376,7 @@ function restartQuiz() {
     loadQuestion();
 }
 
+
+function exitQuiz() {
+    location.reload();
+}
