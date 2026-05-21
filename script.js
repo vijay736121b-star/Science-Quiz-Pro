@@ -400,3 +400,18 @@ function restartQuiz() {
 function exitQuiz() {
     location.reload();
 }
+function nextQuestion() {
+currentQuestion++;
+
+if(currentQuestion < quiz.length){
+loadQuestion();
+}
+}
+
+function prevQuestion() {
+
+if(currentQuestion > 0){
+currentQuestion--;
+loadQuestion();
+}
+}
