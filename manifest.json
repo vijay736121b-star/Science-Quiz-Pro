@@ -1,20 +1,12 @@
 {
-  "background_color": "#000814",
+  "background_color": "#ffffff",
   "dir": "ltr",
   "display": "standalone",
   "name": "Science Quiz Pro",
   "orientation": "any",
-  "scope": "/",
-  "short_name": "Science Quiz",
-  "start_url": "/",
-  "theme_color": "#00c853",
-  "id": "science-quiz-pro",
-  "description": "Interactive science quiz app for students with multiple choice questions and score tracking.",
-  "icons": [
-  {
-    "src": "logo.png",
-    "sizes": "192x192",
-    "type": "image/png"
-  }
-
+  "scope": "/Science-Quiz-Pro/",
+  "short_name": "ScienceQuiz",
+  "start_url": "/Science-Quiz-Pro/",
+  "theme_color": "#ffffff",
+  "lang": "en"
 }
