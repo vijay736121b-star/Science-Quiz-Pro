@@ -9,5 +9,12 @@
   "start_url": "/",
   "theme_color": "#00c853",
   "id": "science-quiz-pro",
-  "description": "Interactive science quiz app for students with multiple choice questions and score tracking."
+  "description": "Interactive science quiz app for students with multiple choice questions and score tracking.",
+  "icons": [
+  {
+    "src": "logo.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  }
+
 }
