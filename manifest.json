@@ -5,15 +5,15 @@
   "name": "Science Quiz Pro",
   "orientation": "any",
   "scope": "/Science-Quiz-Pro/",
-  "short_name": "ScienceQuiz",
-  "start_url": "/Science-Quiz-Pro/",
-  "theme_color": "#ffffff",
+  "short_name": "Science Quiz",
+  "start_url": "https://vijay736121b-star.github.io/Science-Quiz-Pro/",
+  "theme_color": "#2AC142",
   "lang": "en",
   "description": "Science Quiz Pro app for learning and entertainment.",
   "icons": [
     {
-      "src": "file_00000000834c72078f7720735ca52092.png",
-      "sizes": "1254x1254",
+      "src": "logo.png",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     }
