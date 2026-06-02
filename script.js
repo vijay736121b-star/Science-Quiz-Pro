@@ -347,14 +347,14 @@ function checkAnswer(answer) {
     }
 
     
-
+currentQuestion++;
     if(currentQuestion < quiz.length) {
-
-        setTimeout(loadQuestion, 5000);
+loadQuestion();
+        
 
     } else {
 
-        setTimeout(showScore, 5000);
+        showScore();
     }
 }
 
