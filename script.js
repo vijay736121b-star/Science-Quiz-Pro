@@ -346,7 +346,7 @@ function checkAnswer(answer) {
         "❌ Wrong Answer!<br>" + quiz[currentQuestion].reason;
     }
 
-    currentQuestion++;
+    
 
     if(currentQuestion < quiz.length) {
 
