@@ -397,6 +397,9 @@ currentQuestion++;
 if(currentQuestion < quiz.length){
 loadQuestion();
 }
+    else {
+    showScore();
+}
 }
 
 function prevQuestion() {
