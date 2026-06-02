@@ -347,15 +347,6 @@ function checkAnswer(answer) {
     }
 
     
-currentQuestion++;
-    if(currentQuestion < quiz.length) {
-loadQuestion();
-        
-
-    } else {
-
-        showScore();
-    }
 }
 
 function showScore() {
