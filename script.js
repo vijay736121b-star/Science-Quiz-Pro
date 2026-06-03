@@ -317,6 +317,7 @@ function loadQuestion() {
 
     document.getElementById("question").innerHTML =
 "Question " + (currentQuestion + 1) + " / " + quiz.length + "<br><br>" + q.question;
+    document.getElementById("progressBar").style.width = ((currentQuestion + 1) / quiz.length) * 100 + "%";
 
     let buttons = "";
 
