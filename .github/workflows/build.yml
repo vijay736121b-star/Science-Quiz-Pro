@@ -17,14 +17,13 @@ jobs:
           java-version: '17'
       - name: Install Dependencies
         run: |
-          npm install @capacitor/core @capacitor/cli
-          npm install @capacitor/android @capacitor-community/admob
-          npm install
+          npm install @capacitor/core @capacitor/cli @capacitor/android @capacitor-community/admob
       - name: Create Android Project Layout
         run: |
-          npx cap add android --no-open || echo "Android already exists"
+          npx cap add android
       - name: Sync Capacitor Ads
-        run: npx cap sync android
+        run: |
+          npx cap sync android
       - name: Build APK with Gradle
         run: |
           cd android
