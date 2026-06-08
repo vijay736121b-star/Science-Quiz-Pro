@@ -1,3 +1,31 @@
+// Google AdMob Settings
+const bannerAdId = 'ca-app-pub-3940256099942544/6300978111'; // Testing Banner ID (Baad me real daal dena)
+const interstitialAdId = 'ca-app-pub-5201094506257834/2589514244'; // Aapki Real Interstitial ID
+
+// App load hote hi banner dikhane ke liye function
+document.addEventListener('deviceready', () => {
+  if (window.plugins && window.plugins.AdMob) {
+    // Banner Ad Bottom me set karna
+    window.plugins.AdMob.createBanner({
+      adId: bannerAdId,
+      position: window.plugins.AdMob.AD_POSITION.BOTTOM_CENTER,
+      autoShow: true
+    });
+    // Interstitial Ad taiyar rakhna
+    window.plugins.AdMob.prepareInterstitial({
+      adId: interstitialAdId,
+      autoShow: false
+    });
+  }
+}, false);
+
+// Full-screen ad dikhane ke liye function (Ise quiz khatam hone par call karenge)
+function showFullAd() {
+  if (window.plugins && window.plugins.AdMob) {
+    window.plugins.AdMob.showInterstitial();
+  }
+}
+
 const quiz = [
 {
 question: "Which planet is known as the Red Planet?",
