@@ -1,0 +1,6 @@
+{
+  "appId": "com.sciencequiz.pro",
+  "appName": "Science Quiz Pro",
+  "webDir": "./",
+  "bundledWebRuntime": false
+}
