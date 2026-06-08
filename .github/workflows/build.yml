@@ -22,7 +22,6 @@ jobs:
           npm install
       - name: Create Android Project Layout
         run: |
-          npx cap integrity
           npx cap add android --no-open || echo "Android already exists"
       - name: Sync Capacitor Ads
         run: npx cap sync android
