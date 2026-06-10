@@ -18,8 +18,10 @@ jobs:
       - name: Prepare Web Directory
         run: |
           mkdir -p www
-          cp -r * www/ 2>/dev/null || true
-          rm -rf www/android www/.github www/.idx
+          cp -r index.html script.js style.css www/ 2>/dev/null || true
+          cp -r assets www/ 2>/dev/null || true
+          rm -f capacitor.config.json
+          echo '{"appId":"com.sciencequiz.pro","appName":"Science Quiz Pro","webDir":"www","bundledWebRuntime":false}' > capacitor.config.json
       - name: Install Dependencies
         run: |
           npm install @capacitor/core @capacitor/cli @capacitor/android @capacitor-community/admob
@@ -39,4 +41,3 @@ jobs:
         with:
           name: ScienceQuizPro-APK
           path: android/app/build/outputs/apk/debug/app-debug.apk
-          
