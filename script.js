@@ -1,6 +1,6 @@
 // Google AdMob Settings
-const bannerAdId = 'ca-app-pub-3940256099942544/6300978111'; // Testing Banner ID (Baad me real daal dena)
-const interstitialAdId = 'ca-app-pub-5201094506257834/2589514244'; // Aapki Real Interstitial ID
+const bannerAdId = 'ca-app-pub-5201094506257834/9360190703'; // Testing Banner ID (Baad me real daal dena)
+const interstitialAdId = 'ca-app-pub-5201094506257834/1773344727'; // Aapki Real Interstitial ID
 
 // App load hote hi banner dikhane ke liye function
 document.addEventListener('deviceready', () => {
