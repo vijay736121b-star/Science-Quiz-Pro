@@ -7,7 +7,11 @@ export default async function handler(req, res) {
     const { topic } = req.body;
     const apiKey = process.env.GEMINI_API_KEY;
 
-    // Bilkul sahi aur tested Google Gemini API URL
+    if (!apiKey) {
+      return res.status(500).json({ error: 'Vercel me API Key missing hai' });
+    }
+
+    // Bilkul sahi Google Gemini API URL
     const response = await fetch(
       `https://googleapis.com{apiKey}`,
       {
@@ -16,7 +20,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           contents: [{
             parts: [{
-              text: `Generate 3 science MCQ questions about "${topic}". Reply ONLY with a valid JSON array. Do not include markdown formatting or backticks. Format: [{"question": "text", "options": ["A", "B", "C", "D"], "answer": "correct_option"}]`
+              text: `Generate exactly 3 science MCQ questions about "${topic}". Reply ONLY with a valid JSON array string. No markdown, no backticks, no markdown formatting. Format: [{"question": "text", "options": ["A", "B", "C", "D"], "answer": "correct_option"}]`
             }]
           }]
         })
@@ -25,9 +29,9 @@ export default async function handler(req, res) {
 
     const data = await response.json();
     
-    // Server response checking
-    if (!data.candidates || !data.candidates[0]?.content?.parts[0]?.text) {
-      return res.status(500).json({ error: 'AI se galat response mila', details: data });
+    // Response check karna aur handle karna
+    if (!data.candidates || !data.candidates[0] || !data.candidates[0].content.parts[0].text) {
+      return res.status(500).json({ error: 'AI se galat response mila', raw: data });
     }
 
     const aiText = data.candidates[0].content.parts[0].text;
@@ -38,9 +42,12 @@ export default async function handler(req, res) {
       cleanText = cleanText.replace(/^```json/, "").replace(/^```/, "").replace(/```$/, "").trim();
     }
 
-    return res.status(200).json(JSON.parse(cleanText));
+    // Sahi JSON array parse karke bhejna
+    const parsedQuiz = JSON.parse(cleanText);
+    return res.status(200).json(parsedQuiz);
 
   } catch (error) {
     return res.status(500).json({ error: 'Failed to fetch quiz', details: error.message });
   }
-}
+            }
+                             
