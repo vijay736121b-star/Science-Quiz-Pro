@@ -442,7 +442,7 @@ loadQuestion();
 async function loadAIQuestions(userTopic) {
   try {
     // APNI ASLI GEMINI API KEY YAHAN " " KE ANDAR PASTE KAREIN
-    const apiKey = AQ.Ab8RN6K5bg0sd8Zb4YAEuc9-FHxvI6d1DImrjiMsge1D_KD1gQ
+    const apiKey = 
 
     const response = await fetch(
       `https://googleapis.com{apiKey}`,
