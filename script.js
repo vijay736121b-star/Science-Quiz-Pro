@@ -459,7 +459,7 @@ async function loadAIQuestions(userTopic) {
     quiz = aiQuestions;
     
     // Quiz ko zero se restart karna naye data ke sath
-    currentQuestionIndex = 0;
+    currentQuestion = 0;
     score = 0;
     
     // Aapke app ka function jo screen par question dikhata hai
