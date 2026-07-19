@@ -438,3 +438,36 @@ currentQuestion--;
 loadQuestion();
 }
 }
+// AI se naye questions lane wala function
+async function loadAIQuestions(userTopic) {
+  try {
+    // Vercel par bane hamare backend ko call karna
+    const response = await fetch('/api/quiz', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ topic: userTopic })
+    });
+
+    if (!response.ok) {
+      throw new Error('Server se response nahi mila');
+    }
+
+    const aiQuestions = await response.json();
+    console.log("AI se mile questions:", aiQuestions);
+    
+    // Purane static questions ki jagah AI questions set karna
+    quiz = aiQuestions;
+    
+    // Quiz ko zero se restart karna naye data ke sath
+    currentQuestionIndex = 0;
+    score = 0;
+    
+    // Aapke app ka function jo screen par question dikhata hai
+    loadQuestion(); 
+
+  } catch (error) {
+    console.error("AI Quiz load nahi ho paya:", error);
+    alert("AI Quiz generate karne me dikkat aayi. Kripya dobara koshish karein.");
+  }
+}
+  
