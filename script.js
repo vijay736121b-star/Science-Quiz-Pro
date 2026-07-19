@@ -438,36 +438,55 @@ currentQuestion--;
 loadQuestion();
 }
 }
-// AI se naye questions lane wala function
+// Direct Frontend se AI Quiz lane wala function
 async function loadAIQuestions(userTopic) {
   try {
-    // Vercel par bane hamare backend ko call karna
-    const response = await fetch('/api/quiz', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ topic: userTopic })
-    });
+    // APNI ASLI GEMINI API KEY YAHAN " " KE ANDAR PASTE KAREIN
+    const apiKey = AQ.Ab8RN6K5bg0sd8Zb4YAEuc9-FHxvI6d1DImrjiMsge1D_KD1gQ
+
+    const response = await fetch(
+      `https://googleapis.com{apiKey}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{
+            parts: [{
+              text: `Generate exactly 3 science MCQ questions about "${userTopic}". Reply ONLY with a valid JSON array string. No markdown formatting, no backticks. Format: [{"question": "text", "options": ["A", "B", "C", "D"], "answer": "correct_option"}]`
+            }]
+          }]
+        })
+      }
+    );
 
     if (!response.ok) {
-      throw new Error('Server se response nahi mila');
+      throw new Error('API se response nahi mila');
     }
 
-    const aiQuestions = await response.json();
+    const data = await response.json();
+    const aiText = data.candidates[0].content.parts[0].text;
+
+    // JSON clean karke parse karna
+    let cleanText = aiText.trim();
+    if (cleanText.startsWith("```")) {
+      cleanText = cleanText.replace(/^```json/, "").replace(/^```/, "").replace(/```$/, "").trim();
+    }
+
+    const aiQuestions = JSON.parse(cleanText);
     console.log("AI se mile questions:", aiQuestions);
     
-    // Purane static questions ki jagah AI questions set karna
+    // Naye data ke sath quiz restart karna
     quiz = aiQuestions;
-    
-    // Quiz ko zero se restart karna naye data ke sath
     currentQuestion = 0;
     score = 0;
     
-    // Aapke app ka function jo screen par question dikhata hai
+    // Naya question screen par dikhana
     loadQuestion(); 
 
   } catch (error) {
     console.error("AI Quiz load nahi ho paya:", error);
     alert("AI Quiz generate karne me dikkat aayi. Kripya dobara koshish karein.");
   }
-}
+   }
+
   
