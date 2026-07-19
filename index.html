@@ -21,6 +21,9 @@ gtag('config', 'G-T00DE4BRNZ');
     <h1>🚀 Science Quiz Pro</h1>
     
 <input type="text" id="playerName" placeholder="Enter Your Name">
+    <input type="text" id="aiTopic" placeholder="Enter Science Topic (e.g. Space)">
+<button onclick="startAIQuizFromUI()">Generate AI Quiz</button>
+    
     <p id="question"></p>
     
 <div class="progress-container">
@@ -43,6 +46,15 @@ gtag('config', 'G-T00DE4BRNZ');
 <script src="script.js"></script>
     
     <script>
+        window.startAIQuizFromUI = function() {
+    let topic = document.getElementById("aiTopic").value;
+    if(!topic) {
+        alert("Please enter a topic first!");
+        return;
+    }
+    loadAIQuestions(topic);
+};
+        
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('pwabuilder-sw.js');
 }
