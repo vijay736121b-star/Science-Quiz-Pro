@@ -7,6 +7,7 @@ export default async function handler(req, res) {
     const { topic } = req.body;
     const apiKey = process.env.GEMINI_API_KEY;
 
+    // Bilkul sahi Google Gemini API URL
     const response = await fetch(
       `https://googleapis.com{apiKey}`,
       {
@@ -23,12 +24,24 @@ export default async function handler(req, res) {
     );
 
     const data = await response.json();
-    const aiText = data.candidates.content.parts.text;
+    
+    // Response check karna
+    if (!data.candidates || !data.candidates[0].content.parts[0].text) {
+      return res.status(500).json({ error: 'AI se galat response mila' });
+    }
 
-    return res.status(200).json(JSON.parse(aiText.trim()));
+    const aiText = data.candidates[0].content.parts[0].text;
+
+    // JSON clean karke parse karna
+    let cleanText = aiText.trim();
+    if (cleanText.startsWith("```")) {
+      cleanText = cleanText.replace(/^```json/, "").replace(/^```/, "").replace(/```$/, "").trim();
+    }
+
+    return res.status(200).json(JSON.parse(cleanText));
 
   } catch (error) {
     return res.status(500).json({ error: 'Failed to fetch quiz', details: error.message });
   }
-  }
-      
+}
+  
