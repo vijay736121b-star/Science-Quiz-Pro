@@ -438,55 +438,6 @@ currentQuestion--;
 loadQuestion();
 }
 }
-// Direct Frontend se AI Quiz lane wala function
-async function loadAIQuestions(userTopic) {
-  try {
-    // APNI ASLI GEMINI API KEY YAHAN " " KE ANDAR PASTE KAREIN
-    const apiKey = 
 
-    const response = await fetch(
-      `https://googleapis.com{apiKey}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{
-            parts: [{
-              text: `Generate exactly 3 science MCQ questions about "${userTopic}". Reply ONLY with a valid JSON array string. No markdown formatting, no backticks. Format: [{"question": "text", "options": ["A", "B", "C", "D"], "answer": "correct_option"}]`
-            }]
-          }]
-        })
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error('API se response nahi mila');
-    }
-
-    const data = await response.json();
-    const aiText = data.candidates[0].content.parts[0].text;
-
-    // JSON clean karke parse karna
-    let cleanText = aiText.trim();
-    if (cleanText.startsWith("```")) {
-      cleanText = cleanText.replace(/^```json/, "").replace(/^```/, "").replace(/```$/, "").trim();
-    }
-
-    const aiQuestions = JSON.parse(cleanText);
-    console.log("AI se mile questions:", aiQuestions);
-    
-    // Naye data ke sath quiz restart karna
-    quiz = aiQuestions;
-    currentQuestion = 0;
-    score = 0;
-    
-    // Naya question screen par dikhana
-    loadQuestion(); 
-
-  } catch (error) {
-    console.error("AI Quiz load nahi ho paya:", error);
-    alert("AI Quiz generate karne me dikkat aayi. Kripya dobara koshish karein.");
-  }
-   }
 
   
