@@ -29,7 +29,8 @@ jobs:
           npm install @capacitor/assets --save-dev
       - name: Create Android Project Layout
         run: |
-          npx cap add android
+          npx cap add android || true
+          
       - name: Inject Green Logo into Android
         run: |
           npx capacitor-assets generate --android || true
